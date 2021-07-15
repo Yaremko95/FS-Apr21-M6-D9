@@ -16,6 +16,10 @@ const Product = sequlize.define("product", {
     type: DataTypes.FLOAT,
     allowNull: false,
   },
+  category_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 });
 
 export default Product;

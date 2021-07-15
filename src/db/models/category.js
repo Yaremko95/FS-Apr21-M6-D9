@@ -11,6 +11,7 @@ const Category = sequlize.define("productCategory", {
   name: {
     type: DataTypes.TEXT,
     allowNull: false,
+    unique: true,
   },
 });
 

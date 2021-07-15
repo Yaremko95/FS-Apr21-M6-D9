@@ -1,7 +1,9 @@
 import express from "express";
 import { sequlize } from "./db/index.js";
 import cors from "cors";
-
+import productsRouter from "./services/products/index.js";
+import categoriesRouter from "./services/categories/index.js";
+import usersRouter from "./services/users/index.js";
 const app = express();
 
 const port = process.env.PORT || 5001;
@@ -9,9 +11,12 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 
 app.use(express.json());
+app.use("/products", productsRouter);
+app.use("/categories", categoriesRouter);
+app.use("/users", usersRouter);
 
 sequlize
-  .sync({ force: true })
+  .sync({ alter: true })
   .then(() => {
     app.listen(port, () => console.log("🚀 Server is running on port ", port));
 
