@@ -6,7 +6,9 @@ router
   .route("/")
   .get(async (req, res, next) => {
     try {
-      const data = await Category.findAndCountAll({ include: Product });
+      const data = await Category.findAndCountAll({
+        include: { model: Product, as: "products" },
+      });
       res.send(data);
     } catch (error) {
       console.log(error);

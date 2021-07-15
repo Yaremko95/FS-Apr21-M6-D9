@@ -4,7 +4,7 @@ import Category from "./models/category.js";
 import userProduct from "./models/userProduct.js";
 import sequlize from "./models/index.js";
 
-Category.hasMany(Product, { foreignKey: "category_id", as: "category" });
+Category.hasMany(Product, { foreignKey: "category_id", as: "products" });
 Product.belongsTo(Category, { foreignKey: "category_id", as: "category" });
 
 Product.belongsToMany(User, { through: { model: userProduct, unique: false } });
